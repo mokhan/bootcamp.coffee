@@ -1,4 +1,3 @@
-assert = require('assert')
 should = require('chai').should()
 FizzBuzz = require('../src/fizz_buzz')
 
