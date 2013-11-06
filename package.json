@@ -2,6 +2,7 @@
   "name": "bootcamp",
   "version": "0.0.1",
   "devDependencies": {
-    "coffee-script": "*"
+    "coffee-script": "*",
+    "mocha": "*"
   }
 }
