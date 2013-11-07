@@ -29,7 +29,7 @@ describe "MovieLibrary", ->
       @sut.add(@man_on_fire)
       @sut.total_count().should.equal(1)
 
-    xit "does not add two movies that have the same title (logically the same)", ->
+    it "does not add two movies that have the same title (logically the same)", ->
       @sut.add(new Movie(title: 'old school'))
       @sut.add(new Movie(title: 'old school'))
       @sut.total_count().should.equal(1)
