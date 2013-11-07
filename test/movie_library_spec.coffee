@@ -34,3 +34,13 @@ describe "MovieLibrary", ->
       @sut.add(new Movie(title: 'old school'))
       @sut.total_count().should.equal(1)
 
+  context "any?", ->
+    it "returns true when something matches", ->
+      @sut.add(new Movie(title: 'old school'))
+      @sut.add(new Movie(title: 'old school'))
+      result = @sut.any (movie) ->
+        movie.title == 'old school'
+
+      result.should.equal(true)
+
+
