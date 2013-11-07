@@ -78,5 +78,10 @@ module.exports = class MovieLibrary extends Module
       return -1 if x.title < y.title
       return 0
 
+  sorted_by_year_published: ->
+    @movies.sort (x, y) ->
+      x.year_published - y.year_published
 
-
+  sorted_by_year_published_descending: ->
+    @movies.sort (x, y) ->
+      y.year_published - x.year_published

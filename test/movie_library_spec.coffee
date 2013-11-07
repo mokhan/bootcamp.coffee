@@ -104,3 +104,21 @@ describe "MovieLibrary", ->
       expected_order = [ @up, @toy_story, @shawshank_redemption, @pinocchio, @monsters_inc, @man_on_fire, @fantasia, @dumbo, @chasing_amy, @cars ]
       results = @sut.sort_by_title_descending()
       results.should.eql(expected_order)
+
+    it 'Sorts all movies by descending release date', ->
+      expected_order = [@cars, @up, @man_on_fire, @monsters_inc, @chasing_amy, @toy_story, @shawshank_redemption, @dumbo, @fantasia, @pinocchio ]
+      results = @sut.sorted_by_year_published_descending()
+      results.should.eql(expected_order)
+
+    it 'Sorts all movies by ascending release date', ->
+      expected_order = [ @fantasia, @pinocchio, @dumbo, @shawshank_redemption, @toy_story, @chasing_amy, @monsters_inc, @man_on_fire, @up, @cars ]
+      results = @sut.sorted_by_year_published()
+      results.should.eql(expected_order)
+
+    xit 'Sorts all movies by preferred studios and release date ascending', ->
+      #rankings: Pixar, Disney, CastleRock, MiramaxFilms, RegenceyEnterprises
+      rankings = [Studio::Pixar, Studio::Disney, Studio::CastleRock, Studio::MiramaxFilms, Studio::RegencyEnterprises]
+      expected_order = [ @toy_story, @monsters_inc, @up, @cars, @fantasia, @pinocchio, @dumbo, @shawshank_redemption, @chasing_amy, @man_on_fire ]
+      results = @sut.sorted_by_studio_rankings_then_by_year_published()
+      results.should.eql(expected_order)
+
