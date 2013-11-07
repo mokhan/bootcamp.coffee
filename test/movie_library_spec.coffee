@@ -55,3 +55,14 @@ describe "MovieLibrary", ->
       results.should.include(@cars)
       results.should.include(@monsters_inc)
 
+
+    it 'finds all movies published by pixar or disney', ->
+       results = @sut.find_movies_by_pixar_or_disney()
+       results.length.should.equal(7)
+       results.should.include(@toy_story)
+       results.should.include(@up)
+       results.should.include(@cars)
+       results.should.include(@monsters_inc)
+       results.should.include(@fantasia)
+       results.should.include(@dumbo)
+       results.should.include(@pinocchio)

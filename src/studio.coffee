@@ -1,7 +1,7 @@
 module.exports = Studio =
-  CastleRock: ""
-  MiramaxFilms: ""
-  RegencyEnterprises: ""
-  Pixar: ""
-  Disney: ""
+  CastleRock: "Castle Rock"
+  MiramaxFilms: "Miramax Films"
+  RegencyEnterprises: "Regency Enterprises"
+  Pixar: "Pixar"
+  Disney: "Disney"
 

@@ -50,3 +50,6 @@ module.exports = class MovieLibrary extends Module
     @find_all (movie) =>
       movie.studio == Studio.Pixar
 
+  find_movies_by_pixar_or_disney: ->
+    @find_all (movie) =>
+      movie.studio == Studio.Pixar || movie.studio == Studio.Disney
