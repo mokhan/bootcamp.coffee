@@ -22,17 +22,17 @@ describe "MovieLibrary", ->
     it "increases the total number of movies in the library", ->
       @sut.add(@shawshank_redemption)
       @sut.add(@chasing_amy)
-      @sut.total_count().should.equal(2)
+      @sut.count().should.equal(2)
 
     it "does not allow duplicate movies into the library", ->
       @sut.add(@man_on_fire)
       @sut.add(@man_on_fire)
-      @sut.total_count().should.equal(1)
+      @sut.count().should.equal(1)
 
     it "does not add two movies that have the same title (logically the same)", ->
       @sut.add(new Movie(title: 'old school'))
       @sut.add(new Movie(title: 'old school'))
-      @sut.total_count().should.equal(1)
+      @sut.count().should.equal(1)
 
   context "any?", ->
     it "returns true when something matches", ->

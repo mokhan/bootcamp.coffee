@@ -1,4 +1,4 @@
-Enumerable = 
+Enumerable =
   any: (predicate) ->
     result = false
     @each (item) =>
@@ -6,16 +6,15 @@ Enumerable =
       return if result
     result
 
+  includes: (other_item) ->
+    result = false
+    @each (item) =>
+      result ||= (item == other_item || item.equals(other_item))
+    result
+
 moduleKeywords = ['extended', 'included']
 
 class Module
-  @extend: (object) ->
-    for key, value of object when key not in moduleKeywords
-      @[key] = value
-
-    object.extended?.apply(@)
-    this
-
   @include: (object) ->
     for key, value of object when key not in moduleKeywords
       @::[key] = value
@@ -25,20 +24,15 @@ class Module
 
 module.exports = class MovieLibrary extends Module
   @include Enumerable
+
   constructor: ->
     @movies = []
 
   add: (movie) ->
-    @movies.push(movie) unless @contains(movie)
+    @movies.push(movie) unless @includes(movie)
 
-  total_count: ->
+  count: ->
     @movies.length
-
-  contains: (other_movie) ->
-    result = false
-    @each (movie) =>
-      result ||= (movie.title == other_movie.title)
-    result
 
   each: (visitor) ->
     for movie in @movies
