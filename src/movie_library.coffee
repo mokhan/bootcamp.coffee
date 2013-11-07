@@ -66,3 +66,17 @@ module.exports = class MovieLibrary extends Module
     @find_all (movie) =>
       movie.year_published > 1982 && movie.year_published < 2003
 
+  sort_by_title_ascending: ->
+    @movies.sort (x, y) ->
+      return 1 if x.title > y.title
+      return -1 if x.title < y.title
+      return 0
+
+  sort_by_title_descending: ->
+    @movies.sort (y, x) ->
+      return 1 if x.title > y.title
+      return -1 if x.title < y.title
+      return 0
+
+
+

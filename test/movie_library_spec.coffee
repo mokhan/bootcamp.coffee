@@ -90,3 +90,17 @@ describe "MovieLibrary", ->
        results.should.include(@chasing_amy)
        results.should.include(@toy_story)
        results.should.include(@monsters_inc)
+
+  context "sorting movies", ->
+    beforeEach ->
+      @sut.add(movie) for movie in @all_movies
+
+    it "sorts all movies by title ascending", ->
+      expected_order = [ @cars, @chasing_amy, @dumbo, @fantasia, @man_on_fire, @monsters_inc, @pinocchio, @shawshank_redemption, @toy_story, @up ]
+      results = @sut.sort_by_title_ascending()
+      results.should.eql(expected_order)
+
+    it "sorts all movies by title descending", ->
+      expected_order = [ @up, @toy_story, @shawshank_redemption, @pinocchio, @monsters_inc, @man_on_fire, @fantasia, @dumbo, @chasing_amy, @cars ]
+      results = @sut.sort_by_title_descending()
+      results.should.eql(expected_order)
