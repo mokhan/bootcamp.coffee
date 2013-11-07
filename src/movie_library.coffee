@@ -53,3 +53,16 @@ module.exports = class MovieLibrary extends Module
   find_movies_by_pixar_or_disney: ->
     @find_all (movie) =>
       movie.studio == Studio.Pixar || movie.studio == Studio.Disney
+
+  find_movies_not_published_by_pixar: ->
+    @find_all (movie) =>
+      movie.studio != Studio.Pixar
+
+  find_movies_released_after_2004: ->
+    @find_all (movie) =>
+      movie.year_published > 2004
+
+  find_movies_released_between_1982_and_2003: ->
+    @find_all (movie) =>
+      movie.year_published > 1982 && movie.year_published < 2003
+

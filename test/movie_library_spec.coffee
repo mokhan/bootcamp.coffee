@@ -66,3 +66,27 @@ describe "MovieLibrary", ->
        results.should.include(@fantasia)
        results.should.include(@dumbo)
        results.should.include(@pinocchio)
+
+     it "finds all movies not published by pixar", ->
+       results = @sut.find_movies_not_published_by_pixar()
+       results.length.should.equal(6)
+       results.should.include(@fantasia)
+       results.should.include(@dumbo)
+       results.should.include(@pinocchio)
+       results.should.include(@shawshank_redemption)
+       results.should.include(@chasing_amy)
+       results.should.include(@man_on_fire)
+
+     it "finds all movies released after 2004", ->
+       results = @sut.find_movies_released_after_2004()
+       results.length.should.equal(2)
+       results.should.include(@up)
+       results.should.include(@cars)
+
+     it "finds all movies released between 1982 and 2003 - inclusive", ->
+       results = @sut.find_movies_released_between_1982_and_2003()
+       results.length.should.equal(4)
+       results.should.include(@shawshank_redemption)
+       results.should.include(@chasing_amy)
+       results.should.include(@toy_story)
+       results.should.include(@monsters_inc)
