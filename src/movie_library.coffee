@@ -85,3 +85,8 @@ module.exports = class MovieLibrary extends Module
   sorted_by_year_published_descending: ->
     @movies.sort (x, y) ->
       y.year_published - x.year_published
+
+  sorted_by_studio_rankings_then_by_year_published: (rankings) ->
+    @movies.sort (x, y) =>
+      result = rankings.indexOf(x.studio) - rankings.indexOf(y.studio)
+      if result == 0 then (x.year_published - y.year_published) else result
