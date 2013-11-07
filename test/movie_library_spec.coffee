@@ -43,4 +43,15 @@ describe "MovieLibrary", ->
 
       result.should.equal(true)
 
+  context "searching for movies", ->
+    beforeEach ->
+      for movie in @all_movies
+        @sut.add(movie)
+
+    it "can find all pixar movies", ->
+      results = @sut.find_all_movies_by_pixar()
+      results.should.include(@toy_story)
+      results.should.include(@up)
+      results.should.include(@cars)
+      results.should.include(@monsters_inc)
 

@@ -1,3 +1,5 @@
+Studio = require('./studio')
+
 Enumerable =
   any: (predicate) ->
     result = false
@@ -11,6 +13,12 @@ Enumerable =
     @each (item) =>
       result ||= (item == other_item || item.equals(other_item))
     result
+
+  find_all: (predicate) ->
+    results = []
+    @each (item) =>
+      results.push(item) if predicate(item)
+    results
 
 moduleKeywords = ['extended', 'included']
 
@@ -37,4 +45,8 @@ module.exports = class MovieLibrary extends Module
   each: (visitor) ->
     for movie in @movies
       visitor(movie)
+
+  find_all_movies_by_pixar: ->
+    @find_all (movie) =>
+      movie.studio == Studio.Pixar
 
