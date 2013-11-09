@@ -1,6 +1,9 @@
-WhereSpecification = require('./where_specification')
+Module = require('./module')
+Criteria = require('./criteria')
 
-module.exports = class Movie
+module.exports = class Movie extends Module
+  @extend Criteria
+
   constructor: (attributes) ->
     @title = attributes['title']
     @studio = attributes['studio']
@@ -8,7 +11,3 @@ module.exports = class Movie
 
   equals: (other) ->
     @title == other["title"]
-
-  @where: (condition) ->
-    new WhereSpecification(condition)
-

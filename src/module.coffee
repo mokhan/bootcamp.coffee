@@ -8,3 +8,9 @@ module.exports = class Module
     object.included?.apply(@)
     this
 
+  @extend: (object) ->
+    for key, value of object when key not in moduleKeywords
+      @[key] = value
+
+    object.extended?.apply(@)
+    this
