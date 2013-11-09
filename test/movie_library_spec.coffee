@@ -49,7 +49,7 @@ describe "MovieLibrary", ->
         @sut.add(movie)
 
     it "can find all pixar movies", ->
-      results = @sut.find_all_movies_by_pixar()
+      results = @sut.all(Movie.by(Studio.Pixar))
       results.should.include(@toy_story)
       results.should.include(@up)
       results.should.include(@cars)

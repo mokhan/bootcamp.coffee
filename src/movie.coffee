@@ -6,3 +6,14 @@ module.exports = class Movie
 
   equals: (other) ->
     @title == other["title"]
+
+  @by: (studio) ->
+    console.log(studio)
+    new StudioSpecification(studio)
+
+class StudioSpecification
+  constructor: (studio) ->
+    @studio = studio
+
+  matches: (movie) ->
+    @studio == movie.studio

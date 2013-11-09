@@ -20,6 +20,10 @@ Enumerable =
       results.push(item) if predicate(item)
     results
 
+  all: (specification) ->
+    @find_all (movie) -> 
+      specification.matches(movie)
+
 moduleKeywords = ['extended', 'included']
 
 class Module
@@ -45,10 +49,6 @@ module.exports = class MovieLibrary extends Module
   each: (visitor) ->
     for movie in @movies
       visitor(movie)
-
-  find_all_movies_by_pixar: ->
-    @find_all (movie) =>
-      movie.studio == Studio.Pixar
 
   find_movies_by_pixar_or_disney: ->
     @find_all (movie) =>
