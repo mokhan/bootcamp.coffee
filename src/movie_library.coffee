@@ -1,38 +1,6 @@
 Studio = require('./studio')
-
-Enumerable =
-  any: (predicate) ->
-    result = false
-    @each (item) =>
-      result = predicate(item)
-      return if result
-    result
-
-  includes: (other_item) ->
-    result = false
-    @each (item) =>
-      result ||= (item == other_item || item.equals(other_item))
-    result
-
-  find_all: (predicate) ->
-    results = []
-    @each (item) =>
-      results.push(item) if predicate(item)
-    results
-
-  all: (specification) ->
-    @find_all (movie) -> 
-      specification.matches(movie)
-
-moduleKeywords = ['extended', 'included']
-
-class Module
-  @include: (object) ->
-    for key, value of object when key not in moduleKeywords
-      @::[key] = value
-
-    object.included?.apply(@)
-    this
+Module = require('./module')
+Enumerable = require('./enumerable')
 
 module.exports = class MovieLibrary extends Module
   @include Enumerable
