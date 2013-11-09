@@ -68,7 +68,7 @@ describe "MovieLibrary", ->
        results.should.include(@pinocchio)
 
      it "finds all movies not published by pixar", ->
-       results = @sut.find_movies_not_published_by_pixar()
+       results = @sut.all(Movie.where(studio: Studio.Pixar).not())
        results.length.should.equal(6)
        results.should.include(@fantasia)
        results.should.include(@dumbo)

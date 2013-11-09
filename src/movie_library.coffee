@@ -18,10 +18,6 @@ module.exports = class MovieLibrary extends Module
     for movie in @movies
       visitor(movie)
 
-  find_movies_not_published_by_pixar: ->
-    @find_all (movie) =>
-      movie.studio != Studio.Pixar
-
   find_movies_released_after_2004: ->
     @find_all (movie) =>
       movie.year_published > 2004
