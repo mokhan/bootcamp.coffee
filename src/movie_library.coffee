@@ -50,10 +50,6 @@ module.exports = class MovieLibrary extends Module
     for movie in @movies
       visitor(movie)
 
-  find_movies_by_pixar_or_disney: ->
-    @find_all (movie) =>
-      movie.studio == Studio.Pixar || movie.studio == Studio.Disney
-
   find_movies_not_published_by_pixar: ->
     @find_all (movie) =>
       movie.studio != Studio.Pixar

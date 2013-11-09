@@ -57,7 +57,7 @@ describe "MovieLibrary", ->
 
 
     it 'finds all movies published by pixar or disney', ->
-       results = @sut.find_movies_by_pixar_or_disney()
+       results = @sut.all(Movie.where(studio: Studio.Pixar).or(Movie.where(studio: Studio.Disney)))
        results.length.should.equal(7)
        results.should.include(@toy_story)
        results.should.include(@up)
