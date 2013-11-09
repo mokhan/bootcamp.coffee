@@ -7,13 +7,15 @@ module.exports = class Movie
   equals: (other) ->
     @title == other["title"]
 
-  @by: (studio) ->
-    console.log(studio)
-    new StudioSpecification(studio)
+  @where: (condition) ->
+    new WhereSpecification(condition)
 
-class StudioSpecification
-  constructor: (studio) ->
-    @studio = studio
+class WhereSpecification
+  constructor: (condition) ->
+    @condition = condition
 
-  matches: (movie) ->
-    @studio == movie.studio
+  matches: (item) ->
+    for key in Object.keys(@condition)
+      item[key] == @condition[key]
+
+
