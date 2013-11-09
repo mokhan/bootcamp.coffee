@@ -18,14 +18,6 @@ module.exports = class MovieLibrary extends Module
     for movie in @movies
       visitor(movie)
 
-  find_movies_released_after_2004: ->
-    @find_all (movie) =>
-      movie.year_published > 2004
-
-  find_movies_released_between_1982_and_2003: ->
-    @find_all (movie) =>
-      movie.year_published > 1982 && movie.year_published < 2003
-
   sort_by_title_ascending: ->
     @movies.sort (x, y) ->
       return 1 if x.title > y.title

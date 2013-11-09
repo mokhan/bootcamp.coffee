@@ -78,13 +78,13 @@ describe "MovieLibrary", ->
        results.should.include(@man_on_fire)
 
      it "finds all movies released after 2004", ->
-       results = @sut.find_movies_released_after_2004()
+       results = @sut.find_all (movie) -> movie.year_published > 2004
        results.length.should.equal(2)
        results.should.include(@up)
        results.should.include(@cars)
 
      it "finds all movies released between 1982 and 2003 - inclusive", ->
-       results = @sut.find_movies_released_between_1982_and_2003()
+       results = @sut.find_all (movie) -> movie.year_published > 1982 && movie.year_published < 2003
        results.length.should.equal(4)
        results.should.include(@shawshank_redemption)
        results.should.include(@chasing_amy)
