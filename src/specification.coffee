@@ -1,20 +1,6 @@
-module.exports = class OrSpecification
-  constructor: (left, right) ->
-    @left = left
-    @right = right
+Module = require('./module')
+OrSpecification = require('./or_specification')
 
-  matches: (item) ->
-    @left.matches(item) || @right.matches(item)
-
-module.exports = class WhereSpecification
-  constructor: (condition) ->
-    @condition = condition
-
-  matches: (item) ->
-    for key in Object.keys(@condition)
-      return false if item[key] != @condition[key]
-    return true
-
+module.exports = Specification =
   or: (other_specification) ->
     new OrSpecification(this, other_specification)
-

@@ -1,4 +1,4 @@
-WhereSpecification = require('./specification')
+WhereSpecification = require('./where_specification')
 
 module.exports = class Movie
   constructor: (attributes) ->
